@@ -1,7 +1,16 @@
-from analysis import load_and_explore_data
+import seaborn as sns
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, classification_report
 from sklearn.model_selection import train_test_split
+
+
+def load_and_explore_data():
+    # Fetch the classic Titanic dataset pre-loaded in Seaborn
+    df = sns.load_dataset("titanic")
+    # Select necessary columns and drop rows with missing values for simplicity
+    cols = ["age", "fare", "pclass", "sibsp", "parch", "survived"]
+    df = df[cols].dropna()
+    return df
 
 
 def build_and_evaluate_model():
